@@ -1,0 +1,3 @@
+Command: python3 Bayes_tweet_classifier.py
+
+run Bayes_tweet_classifier.py with labeled_corpus.tsv, geo_twits_squares.tsv in the same folder. It will create data.js in your public_html folder. Run it with index.html.
