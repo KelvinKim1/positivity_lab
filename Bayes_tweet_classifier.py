@@ -1,6 +1,8 @@
 import csv
 from twitter_specials import *
 from math import log
+import json
+
 
 posScore_location = {}
 class_location = {}
@@ -100,17 +102,13 @@ for location, class_count in class_location.items():
     score = ((class_count[0] / total - class_count[1] / total) + 1) / 2
     posScore_location[location] = score
 
+prejson = []
+for (location, score) in posScore_location.items():
+    prejson.append(dict([("score", score), ("g", location[1]), ("t", location[0])]))
+
+json_data = json.dumps(prejson)
 
 file_object = open('./public_html/data.js', 'w', newline='')
-file_object.write("var data = [")
-count = 0
-
-for (location, score) in posScore_location.items():
-    if count == 0:
-        file_object.write('{"score": ' + str(score) + ', "g": ' + str(float(location[1])+0.05/2) + ', "t": ' + str(float(location[0])+0.05/2) + '}')
-    else:
-        file_object.write(', {"score": ' + str(score) + ', "g": ' + str(float(location[1]) + 0.05 / 2) + ', "t": ' + str(float(location[0]) + 0.05 / 2) + '}')
-    count += 1
-
-file_object.write('];')
+file_object.write("var data = ")
+file_object.write(json_data)
 file_object.close()
