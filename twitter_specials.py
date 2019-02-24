@@ -56,6 +56,6 @@ def clean_tweet(tweet, emo_repl_order, emo_repl, re_repl ):
         tweet = tweet.replace(k, emo_repl[k])
 
     for r, repl in re_repl.items():
-        tweet = re.sub(r, repl, tweet)
+        tweet = re.sub(r, repl, tweet) 
 
     return tweet
