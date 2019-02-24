@@ -114,22 +114,3 @@ for (location, score) in posScore_location.items():
 
 file_object.write('];')
 file_object.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
